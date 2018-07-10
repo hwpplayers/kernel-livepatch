@@ -13,9 +13,9 @@ objects=$(find . -type f -name "*.c" -o -iname "*.s" | sed "s/^\.\/\(.*\)\.[csS]
 cat << EOF > $1/Makefile
 KDIR ?= /lib/modules/\`uname -r\`/build
 
-obj-m := livepatch-@@RPMRELEASE@@.o
+obj-m := kgraft-patch-@@RPMRELEASE@@.o
 
-livepatch-@@RPMRELEASE@@-y := $objects
+kgraft-patch-@@RPMRELEASE@@-y := $objects
 
 default:
 	\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules
