@@ -73,8 +73,9 @@ done
 source $(dirname $0)/release-version.sh
 
 install -m 644 livepatch_main.c $build_dir
-install -m 644 rpm/kernel-livepatch.spec $build_dir/kernel-livepatch-"$RELEASE".spec
-scripts/register-patches.sh $build_dir/livepatch_main.c $build_dir/kernel-livepatch-"$RELEASE".spec
+install -m 644 shadow.h $build_dir
+install -m 644 rpm/kgraft-patch.spec $build_dir/kgraft-patch-"$RELEASE".spec
+scripts/register-patches.sh $build_dir/livepatch_main.c $build_dir/kgraft-patch-"$RELEASE".spec
 install -m 644 rpm/config.sh $build_dir/config.sh
 
 # create new Makefile in $build_dir
@@ -96,8 +97,8 @@ sed -i \
 		e echo -n 'Source timestamp: '; cat $build_dir/$tsfile
 		d
 	}" \
-	$build_dir/kernel-livepatch-"$RELEASE".spec
+	$build_dir/kgraft-patch-"$RELEASE".spec
 
 # changelog
-changelog=$build_dir/kernel-livepatch-"$RELEASE".changes
+changelog=$build_dir/kgraft-patch-"$RELEASE".changes
 scripts/gitlog2changes.pl HEAD -- > "$changelog"
