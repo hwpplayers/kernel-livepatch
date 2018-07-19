@@ -35,7 +35,7 @@
 #
 #
 # Usage:
-#   register-patches.sh livepatch_main.c kernel-livepatch.spec
+#   register-patches.sh livepatch_main.c kgraft-patch.spec
 #
 # This will properly substitute a number of placeholders in-place.
 #
@@ -262,7 +262,7 @@ s%\s*@@KLP_PATCHES_CLEANUP_CALLS@@;\?%$KLP_PATCHES_CLEANUP_CALLS%;
 s%\s*@@KLP_PATCHES_CLEANUP_CALLS@@;\?%$KLP_PATCHES_CLEANUP_CALLS%;
 EOF
 
-# Finish kernel-livepatch.spec:
+# Finish kgraft-patch.spec:
 ## Enumerate the per subpatch source *.tar.bz2.
 ## Note: Start with Source5
 S=6
