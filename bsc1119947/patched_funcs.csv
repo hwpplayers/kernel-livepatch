@@ -1,0 +1,4 @@
+sunrpc bc_svc_process klp_bc_svc_process
+auth_rpcgss svcauth_gss_accept klp_svcauth_gss_accept
+auth_rpcgss svcauth_gss_release klp_svcauth_gss_release
+nfsv4 nfs4_callback_compound klp_nfs4_callback_compound
