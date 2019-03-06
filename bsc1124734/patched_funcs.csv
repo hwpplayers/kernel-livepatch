@@ -1,0 +1,1 @@
+kvm_intel free_nested klp_free_nested IS_ENABLED(CONFIG_KVM_INTEL)
