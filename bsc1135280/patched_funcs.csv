@@ -1,0 +1,1 @@
+kvmgt intel_vgpu_mmap klp_intel_vgpu_mmap IS_ENABLED(CONFIG_DRM_I915_GVT_KVMGT)
