@@ -1,0 +1,2 @@
+mwifiex mwifiex_set_mgmt_ies klp_mwifiex_set_mgmt_ies
+mwifiex mwifiex_update_bss_desc_with_ie klp_mwifiex_update_bss_desc_with_ie
