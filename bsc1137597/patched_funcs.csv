@@ -1,0 +1,3 @@
+vmlinux tcp_sacktag_walk klp_tcp_sacktag_walk
+vmlinux tcp_fragment klp_tcp_fragment
+vmlinux __tcp_retransmit_skb klp__tcp_retransmit_skb
