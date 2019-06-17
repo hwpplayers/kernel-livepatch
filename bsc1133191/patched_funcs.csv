@@ -1,0 +1,9 @@
+vmlinux follow_page_mask klp_follow_page_mask
+vmlinux __get_user_pages klp__get_user_pages
+vmlinux __get_user_pages_fast klp__get_user_pages_fast IS_ENABLED(CONFIG_PPC64)
+vmlinux gup_pte_range klp_gup_pte_range IS_ENABLED(CONFIG_X86_64)
+vmlinux gup_huge_pmd klp_gup_huge_pmd IS_ENABLED(CONFIG_X86_64)
+vmlinux gup_huge_pud klp_gup_huge_pud IS_ENABLED(CONFIG_X86_64)
+vmlinux SyS_splice SyS_klp_splice
+vmlinux SyS_tee SyS_klp_tee
+fuse fuse_dev_splice_write klp_fuse_dev_splice_write
