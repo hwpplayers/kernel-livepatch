@@ -1,0 +1,1 @@
+vmlinux init_new_context klp_init_new_context CONFIG_PPC64
