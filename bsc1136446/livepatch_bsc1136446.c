@@ -81,6 +81,8 @@ static int (*klp_mwifiex_update_vs_ie)(const u8 *ies, int ies_len,
 				       unsigned int oui, u8 oui_type);
 static void (*klp__mwifiex_dbg)(const struct mwifiex_adapter *adapter, int mask,
 				const char *fmt, ...);
+static const u8 *(*klp_cfg80211_find_vendor_ie)(unsigned int oui, int oui_type,
+						const u8 *ies, int len);
 
 static struct klp_kallsyms_reloc klp_funcs[] = {
 	{ "mwifiex_update_uap_custom_ie",
@@ -88,6 +90,8 @@ static struct klp_kallsyms_reloc klp_funcs[] = {
 	{ "mwifiex_update_vs_ie",
 	  (void *)&klp_mwifiex_update_vs_ie, "mwifiex" },
 	{ "_mwifiex_dbg", (void *)&klp__mwifiex_dbg, "mwifiex" },
+	{ "cfg80211_find_vendor_ie", (void *)&klp_cfg80211_find_vendor_ie,
+	  "cfg80211" },
 };
 
 /* from drivers/net/wireless/marvell/mwifiex/decl.h */
@@ -854,10 +858,10 @@ static int klp_mwifiex_uap_parse_tail_ies(struct mwifiex_private *priv,
 			break;
 		case WLAN_EID_VENDOR_SPECIFIC:
 			/* Skip only Microsoft WMM IE */
-			if (cfg80211_find_vendor_ie(WLAN_OUI_MICROSOFT,
-						    WLAN_OUI_TYPE_MICROSOFT_WMM,
-						    (const u8 *)hdr,
-						    hdr->len + sizeof(struct ieee_types_header)))
+			if (klp_cfg80211_find_vendor_ie(WLAN_OUI_MICROSOFT,
+							WLAN_OUI_TYPE_MICROSOFT_WMM,
+							(const u8 *)hdr,
+							hdr->len + sizeof(struct ieee_types_header)))
 				break;
 		default:
 			/*
@@ -883,9 +887,9 @@ static int klp_mwifiex_uap_parse_tail_ies(struct mwifiex_private *priv,
 	/* parse only WPA vendor IE from tail, WMM IE is configured by
 	 * bss_config command
 	 */
-	vendorhdr = (void *)cfg80211_find_vendor_ie(WLAN_OUI_MICROSOFT,
-						    WLAN_OUI_TYPE_MICROSOFT_WPA,
-						    info->tail, info->tail_len);
+	vendorhdr = (void *)klp_cfg80211_find_vendor_ie(WLAN_OUI_MICROSOFT,
+							WLAN_OUI_TYPE_MICROSOFT_WPA,
+							info->tail, info->tail_len);
 	if (vendorhdr) {
 		/*
 		 * Fix bsc#1136935
