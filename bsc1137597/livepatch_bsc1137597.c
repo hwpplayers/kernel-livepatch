@@ -3,8 +3,11 @@
  *
  * Fix for CVE-2019-11477 + CVE-2019-11478, bsc#1137597
  *
- *  Upstream commit:
- *  none yet due to embargo
+ *  Upstream commits:
+ *  3b4929f65b0d ("tcp: limit payload size of sacked skbs")
+ *  f070ef2ac667 ("tcp: tcp_fragment() should apply sane memory limits")
+ *  (5f3e2bf008c2 ("tcp: add tcp_min_snd_mss sysctl"))
+ *  (967c05aee439 ("tcp: enforce tcp_min_snd_mss in tcp_mtu_probing()"))
  *
  *  SLE12 + SLE12-SP1 commits:
  *  6f7ff168995b78101a93865bf562a91273d7435a
