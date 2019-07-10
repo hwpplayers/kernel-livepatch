@@ -3,8 +3,13 @@
  *
  * Fix for CVE-2019-11477 + CVE-2019-11478, bsc#1137597
  *
- *  Upstream commit:
- *  none yet due to embargo
+ *  Upstream commits:
+ *  3b4929f65b0d ("tcp: limit payload size of sacked skbs")
+ *  f070ef2ac667 ("tcp: tcp_fragment() should apply sane memory limits")
+ *  (5f3e2bf008c2 ("tcp: add tcp_min_snd_mss sysctl"))
+ *  (967c05aee439 ("tcp: enforce tcp_min_snd_mss in tcp_mtu_probing()"))
+ *  stable-4.4.y commit 46c7b5d6f2a5 ("tcp: refine memory limit test in
+ *                                     tcp_fragment()")
  *
  *  SLE12 + SLE12-SP1 commits:
  *  6f7ff168995b78101a93865bf562a91273d7435a
@@ -13,6 +18,7 @@
  *  (48e5a63bc78efdec3cd06c93cbe6cbbb9c0c570d)
  *  (d061d4d128de534400f62e0c175df243da34bc73)
  *  ea193359ae56c672ea973f0066243fbdfa43d734
+ *  c9064e0f8aa0d0a372c262790a14b82f013de362
  *
  *  SLE12-SP2 + SLE12-SP3 commits:
  *  b63d7f9a591a47e2ecb8fcd36e2cc2d068be91f8
@@ -22,6 +28,7 @@
  *  (f03f5a0ea96c990dbb37114bb0c5b7500c76396c)
  *  (c2f7307376fc535ca83476a24d9662323ad56567)
  *  d10d22d3702ddd19a3ce43260a61659919e89fce
+ *  a0d7e38df8ec1b2ba672f43ba14000102ae875eb
  *
  *  SLE12-SP4 + SLE15 + SLE15-SP1 commits:
  *  a7efdcda37c66e80dd2f57d30b40b26200c9e70b
@@ -31,6 +38,7 @@
  *  (bd421bec7a1f519f6f50fd56dcc7ef0bf4618886)
  *  (0a0be125c7a1d396ab78e3b3a66d829320d5aa48)
  *  4a006b25335fa286c6ee433d8c176aa5cd67b3fe
+ *  18fef7f39b297fc9b860faccf59fad6e0e7e0fb4
  *
  *  Copyright (c) 2019 SUSE
  *  Author: Nicolai Stange <nstange@suse.de>
@@ -567,7 +575,7 @@ int klp_tcp_fragment(struct sock *sk, struct sk_buff *skb, u32 len,
 	 * Fix CVE-2019-11478
 	 *  +3 lines
 	 */
-	if (unlikely((sk->sk_wmem_queued >> 1) > sk->sk_sndbuf))
+	if (unlikely((sk->sk_wmem_queued >> 1) > sk->sk_sndbuf + 0x20000))
 		return -ENOMEM;
 
 	if (skb_unclone(skb, gfp))
