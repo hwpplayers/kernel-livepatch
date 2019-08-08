@@ -1,0 +1,3 @@
+vmlinux insn_get_seg_base klp_insn_get_seg_base CONFIG_X86_64
+vmlinux insn_get_code_seg_params klp_insn_get_code_seg_params CONFIG_X86_64
+vmlinux get_seg_base_limit klp_get_seg_base_limit CONFIG_X86_64
