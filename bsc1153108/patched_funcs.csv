@@ -1,0 +1,2 @@
+vmlinux filldir klpp_filldir
+vmlinux filldir64 klpp_filldir64
