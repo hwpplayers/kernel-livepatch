@@ -3,18 +3,23 @@
  *
  * Fix for CVE-2019-10220, bsc#1153108
  *
- *  Upstream commit:
+ *  Upstream commits:
  *  8a23eb804ca4 ("Make filldir[64]() verify the directory entry filename is
  *                 valid")
+ *  b9959c7a347d ("filldir[64]: remove WARN_ON_ONCE() for bad directory
+ *                 entries")
  *
- *  SLE12-SP1 commit:
- *  none yet
+ *  SLE12-SP1 commits:
+ *  04d5f0191bff61efb758feb4aec461deeb179018
+ *  6cee833b2cb859e591b56c85f85693e4036ca432
  *
- *  SLE12-SP2 and -SP3 commit:
- *  none yet
+ *  SLE12-SP2 and -SP3 commits:
+ *  f4dab74f9291a6aebed535e59234c1bd90c25c46
+ *  0ff891a26e136306b475e8fad66481d28cb5d192
  *
- *  SLE12-SP4, SLE15 and SLE15-SP1 commit:
- *  none yet
+ *  SLE12-SP4, SLE15 and SLE15-SP1 commits:
+ *  4a75878f7ce639f1c0683bd803e8523ea1b57f2a
+ *  8d6442e9931c79ea0d4ed9899eda4bb3f23202e3
  *
  *
  *  Copyright (c) 2019 SUSE
