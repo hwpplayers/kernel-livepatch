@@ -1,0 +1,2 @@
+vmlinux ptrace_attach klpp_ptrace_attach
+vmlinux ptrace_traceme klpp_ptrace_traceme
