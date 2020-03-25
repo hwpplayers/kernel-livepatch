@@ -1,0 +1,5 @@
+vxlan vxlan_xmit_one klpp_vxlan_xmit_one
+vxlan vxlan_fill_metadata_dst klpp_vxlan_fill_metadata_dst
+geneve geneve_get_v6_dst klpp_geneve_get_v6_dst
+tipc tipc_udp_send_msg klpp_tipc_udp_send_msg
+rdma_rxe rxe_find_route klpp_rxe_find_route IS_ENABLED(CONFIG_RDMA_RXE)
