@@ -41,7 +41,7 @@ BuildRequires:  kernel-syms kgraft-devel libelf-devel
 %if 0%{?use_klp_convert}
 BuildRequires:  kernel-default-kgraft-devel
 %endif
-ExclusiveArch:	ppc64le x86_64
+ExclusiveArch:	@@EXCARCH@@
 %kgraft_module_package
 
 %description
