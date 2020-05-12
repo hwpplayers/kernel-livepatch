@@ -1,0 +1,1 @@
+mwifiex mwifiex_cmd_append_vsie_tlv klpp_mwifiex_cmd_append_vsie_tlv IS_ENABLED(CONFIG_MWIFIEX)
