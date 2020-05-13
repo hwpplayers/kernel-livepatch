@@ -1,0 +1,1 @@
+mwifiex mwifiex_ret_wmm_get_status klpp_mwifiex_ret_wmm_get_status IS_ENABLED(CONFIG_MWIFIEX)
