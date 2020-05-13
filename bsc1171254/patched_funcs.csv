@@ -1,0 +1,3 @@
+mwifiex mwifiex_cmd_append_vsie_tlv klpp_mwifiex_cmd_append_vsie_tlv
+mwifiex mwifiex_cmd_802_11_bg_scan_config klpp_mwifiex_cmd_802_11_bg_scan_config
+mwifiex mwifiex_scan_networks klpp_mwifiex_scan_networks
