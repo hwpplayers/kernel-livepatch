@@ -139,9 +139,9 @@ parse_release() {
 }
 
 rel=($(parse_release $RELEASE))
-if [[ -n "${rel[0]##*Test*}" && ${rel[0]} -eq 15 && ${rel[1]} -eq 1 ]]; then
-	sed -i "s/@@USE_KLP_CONVERT@@/%define use_klp_convert 1/" $build_dir/kgraft-patch-"$RELEASE".spec
-	sed -i "/^KDIR/a ccflags-y := -DUSE_KLP_CONVERT" $build_dir/Makefile
-else
+#if [[ -n "${rel[0]##*Test*}" && ${rel[0]} -eq 15 && ${rel[1]} -eq 1 ]]; then
+#	sed -i "s/@@USE_KLP_CONVERT@@/%define use_klp_convert 1/" $build_dir/kgraft-patch-"$RELEASE".spec
+#	sed -i "/^KDIR/a ccflags-y := -DUSE_KLP_CONVERT" $build_dir/Makefile
+#else
 	sed -i "s/@@USE_KLP_CONVERT@@//" $build_dir/kgraft-patch-"$RELEASE".spec
-fi
+#fi
