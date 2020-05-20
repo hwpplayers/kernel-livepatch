@@ -108,9 +108,11 @@ if echo "$RELEASE" | \
       awk -F, '{ print $1 " " ($2 ? $2 : 0) " " $3 }') \
   )
 
+  # s390x shall be enabled from SLE12-SP4 update 13 onwards.
   # s390x is supported for SLE12-SP5 from update 3 onwards.
   # s390x is supported from SLE15-SP2 onwards.
-  if [ ${cs[0]} -eq 12 -a ${cs[1]} -eq 5 -a ${cs[2]} -ge 3 -o \
+  if [ ${cs[0]} -eq 12 -a ${cs[1]} -eq 4 -a ${cs[2]} -ge 13 -o \
+       ${cs[0]} -eq 12 -a ${cs[1]} -eq 5 -a ${cs[2]} -ge 3 -o \
        ${cs[0]} -eq 15 -a ${cs[1]} -ge 2 ]; then
       excarch="$excarch s390x"
   fi
@@ -137,9 +139,9 @@ parse_release() {
 }
 
 rel=($(parse_release $RELEASE))
-if [[ -n "${rel[0]##*Test*}" && ${rel[0]} -eq 15 && ${rel[1]} -eq 1 ]]; then
-	sed -i "s/@@USE_KLP_CONVERT@@/%define use_klp_convert 1/" $build_dir/kernel-livepatch-"$RELEASE".spec
-	sed -i "/^KDIR/a ccflags-y := -DUSE_KLP_CONVERT" $build_dir/Makefile
-else
+#if [[ -n "${rel[0]##*Test*}" && ${rel[0]} -eq 15 && ${rel[1]} -eq 1 ]]; then
+#	sed -i "s/@@USE_KLP_CONVERT@@/%define use_klp_convert 1/" $build_dir/kernel-livepatch-"$RELEASE".spec
+#	sed -i "/^KDIR/a ccflags-y := -DUSE_KLP_CONVERT" $build_dir/Makefile
+#else
 	sed -i "s/@@USE_KLP_CONVERT@@//" $build_dir/kernel-livepatch-"$RELEASE".spec
-fi
+#fi
