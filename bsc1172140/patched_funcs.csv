@@ -1,0 +1,3 @@
+xfrm_user xfrm_add_policy klpp_xfrm_add_policy
+xfrm_user xfrm_add_acquire klpp_xfrm_add_acquire
+xfrm_user xfrm_compile_policy klpp_xfrm_compile_policy
