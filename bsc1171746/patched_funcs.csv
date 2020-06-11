@@ -1,0 +1,1 @@
+vmlinux modify_user_hw_breakpoint klpp_modify_user_hw_breakpoint IS_ENABLED(CONFIG_HAVE_HW_BREAKPOINT)
