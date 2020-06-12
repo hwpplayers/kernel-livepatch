@@ -62,17 +62,19 @@
 
 static insn_attr_t (*klp_inat_get_opcode_attribute)(insn_byte_t opcode);
 static void (*klp_insn_get_prefixes)(struct insn *insn);
+static void (*klp_insn_get_opcode)(struct insn *insn);
 
 static struct klp_kallsyms_reloc klp_funcs[] = {
 	{ "inat_get_opcode_attribute", (void *)&klp_inat_get_opcode_attribute },
 	{ "insn_get_prefixes", (void *)&klp_insn_get_prefixes },
+	{ "insn_get_opcode", (void *)&klp_insn_get_opcode },
 };
 
 /* from arch/x86/lib/insn-eval.c */
 /* inlined */
 static bool klp_is_string_insn(struct insn *insn)
 {
-	insn_get_opcode(insn);
+	klp_insn_get_opcode(insn);
 
 	/* All string instructions have a 1-byte opcode. */
 	if (insn->opcode.nbytes != 1)
